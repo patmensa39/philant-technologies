@@ -22,6 +22,7 @@ export default async function Skills() {
           <li className="card" key={c.name}>
             <strong>{c.name}</strong>
             <span className="muted">{c.issuer}{c.earned ? ` · Earned ${formatDate(c.earned)}` : ' · Date to be added'}{c.expires ? ` · Expires ${formatDate(c.expires)}` : ''}</span>
+            {c.credentialId && <span className="small muted">Credential ID: {c.credentialId}</span>}
             {c.credentialUrl && <a href={c.credentialUrl} rel="noopener">Verify credential</a>}
           </li>
         ))}</ul>

@@ -1,31 +1,41 @@
 import Link from 'next/link';
-import { getArticles, getProfile, getProjects, getResources } from '@/lib/content';
+import { getArticles, getProfile, getProjects, getResources, photoSrc } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
 
 export default async function Home() {
   const [profile, articles, projects, resources] = await Promise.all([getProfile(), getArticles(), getProjects(), getResources()]);
   const featured = projects.filter((p) => p.featured).slice(0, 3);
   const certs = profile?.certifications ?? [];
+  const photo = photoSrc(profile?.photo);
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const certCode = (n: string) => n.match(/\(([A-Z]{2,3}-\d{3})\)/)?.[1] ?? n;
+  const person = {
+    '@context': 'https://schema.org', '@type': 'Person', name: profile?.name, url: site,
+    jobTitle: 'Power Platform Developer', worksFor: { '@type': 'Organization', name: 'Philant Technologies' },
+    image: photo ? site + photo : undefined, sameAs: (profile?.links ?? []).map((l) => l.url).filter(Boolean),
+  };
   const recent = articles.slice(0, 3);
   return (
     <>
       <div className="wrap hero">
-        <div>
-          <h1>{profile?.siteName ?? 'Philant Technologies'}</h1>
-          <p className="lede">{profile?.tagline ?? '[Your professional tagline]'}</p>
-          <p className="muted" style={{ maxWidth: '52ch' }}>{profile?.bio}</p>
+        {photo && (
+          <figure className="portrait">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={photo} alt={profile?.photoAlt || `Portrait of ${profile?.name ?? 'the site owner'}`} width={800} height={800} fetchPriority="high" />
+          </figure>
+        )}
+        <div className="hero-text">
+          <h1>{profile?.name ?? '[Your Name]'}</h1>
+          <p className="lede">{profile?.tagline}</p>
+          <p className="muted" style={{ maxWidth: '54ch' }}>{profile?.bio}</p>
           <div className="actions">
             <Link className="btn" href="/projects">Explore my work</Link>
-            <Link className="btn ghost" href="/blog">Read the blog</Link>
+            <Link className="btn ghost" href="/about">About me</Link>
+            <Link className="btn ghost" href="/contact">Get in touch</Link>
           </div>
         </div>
-        <pre className="schema" aria-label="Site contents at a glance"><code>{`table: site
-  `}<span className="k">articles</span>{`    `}<Link href="/blog">/blog</Link>{`
-  `}<span className="k">projects</span>{`    `}<Link href="/projects">/projects</Link>{`
-  `}<span className="k">resources</span>{`   `}<Link href="/resources">/resources</Link>{`
-  `}<span className="k">skills</span>{`      `}<Link href="/skills">/skills</Link>{`
-  `}<span className="c">// edit in /keystatic</span></code></pre>
       </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, '\\u003c') }} />
 
       <section className="section" aria-labelledby="recent">
         <div className="wrap">
@@ -73,7 +83,7 @@ export default async function Home() {
         <section className="section" aria-labelledby="certs">
           <div className="wrap">
             <div className="section-head"><h2 id="certs">Certifications</h2><Link href="/skills">Skills and certifications</Link></div>
-            <ul className="tagrow" style={{ listStyle: 'none', padding: 0, margin: 0 }}>{certs.map((c) => <li key={c.name} className="pill">{c.name.split(':')[0]}</li>)}</ul>
+            <ul className="tagrow" style={{ listStyle: 'none', padding: 0, margin: 0 }}>{certs.map((c) => <li key={c.name} className="pill" title={c.name}>{certCode(c.name)}</li>)}</ul>
           </div>
         </section>
       )}

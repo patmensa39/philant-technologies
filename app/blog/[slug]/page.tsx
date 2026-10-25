@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { renderMarkdoc } from '@/lib/markdoc';
 import Link from 'next/link';
-import { getArticle, getArticles, formatDate, relatedArticles } from '@/lib/content';
+import { getArticle, getArticles, getProfile, formatDate, relatedArticles } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
@@ -19,7 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: a.entry.title,
     description: a.entry.summary,
     alternates: { canonical: `/blog/${slug}` },
-    openGraph: { type: 'article', title: a.entry.title, description: a.entry.summary, publishedTime: a.entry.publishedAt ?? undefined },
+    openGraph: { type: 'article', title: a.entry.title, description: a.entry.summary, publishedTime: a.entry.publishedAt ?? undefined, images: ['/opengraph-image'] },
+    twitter: { card: 'summary_large_image' },
   };
 }
 
@@ -29,6 +31,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!a) notFound();
   const { entry, content, headings, minutes } = a;
   const all = await getArticles();
+  const profile = await getProfile();
   const idx = all.findIndex((x) => x.slug === slug);
   const current = all[idx];
   const newer = idx > 0 ? all[idx - 1] : null;
@@ -36,13 +39,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const related = current ? relatedArticles(current, all) : [];
   const url = `${SITE}/blog/${slug}`;
   const enc = encodeURIComponent;
+  const crumbLd = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [['Home', SITE], ['Blog', `${SITE}/blog`], [entry.title, url]].map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })),
+  };
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'Article', headline: entry.title, description: entry.summary, url,
     datePublished: entry.publishedAt ?? undefined, dateModified: entry.updatedAt ?? entry.publishedAt ?? undefined,
-    author: { '@type': 'Person', name: '[Author name]' },
+    author: { '@type': 'Person', name: profile?.name ?? 'Site author' },
   };
   return (
     <div className="wrap">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: entry.title }]} />
       <header className="article-head">
         {entry.isDemo && <p><span className="pill demo">Demo content</span></p>}
         <h1>{entry.title}</h1>
@@ -72,6 +80,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {older && <Link className="next" href={`/blog/${older.slug}`}><span className="muted small">Older</span><br />{older.title}</Link>}
       </nav>
       {related.length > 0 && <section className="no-print" aria-labelledby="related"><h2 id="related">Related articles</h2><div className="grid">{related.map((r) => <ArticleCard key={r.slug} {...r} />)}</div></section>}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbLd).replace(/</g, '\\u003c') }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
     </div>
   );

@@ -43,6 +43,8 @@ export default config({
       schema: {
         siteName: fields.text({ label: 'Site name', defaultValue: 'Philant Technologies' }),
         name: fields.text({ label: 'Your name', defaultValue: '[Your Name]' }),
+        photo: fields.image({ label: 'Portrait photo', directory: 'public/images/profile', publicPath: '/images/profile/' }),
+        photoAlt: fields.text({ label: 'Portrait alt text' }),
         tagline: fields.text({ label: 'Tagline', defaultValue: '[Your professional tagline]' }),
         bio: fields.text({ label: 'Short bio', multiline: true, defaultValue: '[Short biography. Replace with your own text.]' }),
         email: fields.text({ label: 'Public contact email' }),
@@ -60,12 +62,30 @@ export default config({
           }),
           { label: 'Skill groups', itemLabel: (g) => g.fields.category.value },
         ),
+        experience: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Job title' }),
+            organization: fields.text({ label: 'Organization' }),
+            period: fields.text({ label: 'Period (for example: Oct 2023 to May 2026)' }),
+            highlights: fields.array(fields.text({ label: 'Highlight', multiline: true }), { label: 'Highlights', itemLabel: (h) => h.value.slice(0, 60) }),
+          }),
+          { label: 'Experience', itemLabel: (e) => `${e.fields.title.value} at ${e.fields.organization.value}` },
+        ),
+        education: fields.array(
+          fields.object({
+            degree: fields.text({ label: 'Degree' }),
+            institution: fields.text({ label: 'Institution' }),
+            completed: fields.text({ label: 'Completed (for example: May 2022)' }),
+          }),
+          { label: 'Education', itemLabel: (e) => e.fields.degree.value },
+        ),
         certifications: fields.array(
           fields.object({
             name: fields.text({ label: 'Name' }),
             issuer: fields.text({ label: 'Issuing organization', defaultValue: 'Microsoft' }),
             earned: fields.date({ label: 'Date earned' }),
             expires: fields.date({ label: 'Expiration (optional)' }),
+            credentialId: fields.text({ label: 'Credential ID' }),
             credentialUrl: fields.url({ label: 'Credential URL' }),
           }),
           { label: 'Certifications', itemLabel: (c) => c.fields.name.value },

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getResource, getResources, formatDate } from '@/lib/content';
 import { renderMarkdoc } from '@/lib/markdoc';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 
 export async function generateStaticParams() { return (await getResources()).map((r) => ({ slug: r.slug })); }
 
@@ -19,6 +20,7 @@ export default async function ResourcePage({ params }: { params: Promise<{ slug:
   const isPdf = entry.file?.toLowerCase().endsWith('.pdf');
   return (
     <div className="wrap">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Resources', href: '/resources' }, { label: entry.title }]} />
       <header className="article-head">
         {entry.isDemo && <p><span className="pill demo">Demo content</span></p>}
         <h1>{entry.title}</h1>

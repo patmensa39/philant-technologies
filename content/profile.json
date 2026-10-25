@@ -1,37 +1,50 @@
 {
   "siteName": "Philant Technologies",
-  "name": "[Your Name]",
-  "tagline": "Power Platform developer, data specialist, and technical educator.",
-  "bio": "[Placeholder biography. Replace this text in the admin under Profile and site settings.]",
+  "name": "Patrick S. Mensah",
+  "tagline": "Power Platform developer and data professional building enterprise applications for public-sector teams.",
+  "bio": "Certified Power Platform Developer who designs and deploys enterprise applications with Microsoft Power Platform, Dataverse, and integrated data solutions for New York State agencies. My work covers procurement, contracts, financial operations, and audit processes, built on a foundation in statistics, biostatistics, and data analytics.",
   "email": "",
-  "links": [],
+  "links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/patricksmensah/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/patmensa39"
+    }
+  ],
   "certifications": [
     {
-      "name": "PL-400: Power Platform Developer Associate",
+      "name": "Power Platform Developer Associate (PL-400)",
       "issuer": "Microsoft",
       "earned": null,
       "expires": null,
+      "credentialId": "38F1A16385093371",
       "credentialUrl": null
     },
     {
-      "name": "PL-200: Power Platform Functional Consultant Associate",
+      "name": "Power Platform Functional Consultant (PL-200)",
       "issuer": "Microsoft",
       "earned": null,
       "expires": null,
+      "credentialId": "B9187940BA6F71A8",
       "credentialUrl": null
     },
     {
-      "name": "PL-900: Power Platform Fundamentals",
+      "name": "Power Platform Fundamentals (PL-900)",
       "issuer": "Microsoft",
       "earned": null,
       "expires": null,
+      "credentialId": "DFA81E7DCB89087B",
       "credentialUrl": null
     },
     {
-      "name": "AZ-900: Azure Fundamentals",
+      "name": "Azure Fundamentals (AZ-900)",
       "issuer": "Microsoft",
       "earned": null,
       "expires": null,
+      "credentialId": "2AC97AC05E442F45",
       "credentialUrl": null
     }
   ],
@@ -39,49 +52,134 @@
     {
       "category": "Power Platform",
       "skills": [
-        "Power Apps (canvas and model-driven)",
-        "Power Automate",
-        "Dataverse",
+        "Power Apps: model-driven and canvas apps",
+        "Power Automate cloud flows",
+        "Dataverse data modeling",
         "Power Pages",
-        "Power Fx"
-      ]
-    },
-    {
-      "category": "Dynamics 365",
-      "skills": [
-        "Customer engagement applications"
+        "Power Fx",
+        "Business Process Flows",
+        "Custom pages",
+        "AI Builder"
       ]
     },
     {
       "category": "Programming and development",
       "skills": [
-        "JavaScript",
-        "Python",
-        "SQL"
+        "JavaScript for Power Apps customization",
+        "JavaScript web resources and client-side form scripts",
+        "REST APIs",
+        "Power Fx components"
       ]
     },
     {
       "category": "Data and analytics",
       "skills": [
+        "SQL",
+        "Python: Pandas, NumPy, Scikit-learn",
+        "R: Tidyverse, ggplot2",
+        "ETL and data modeling",
+        "Power Query and Dataflows",
         "Power BI",
-        "Power Query",
-        "R",
-        "Statistical analysis"
+        "Tableau"
       ]
     },
     {
       "category": "Cloud and integration",
       "skills": [
-        "Azure",
+        "Microsoft Azure",
         "Microsoft Entra ID",
-        "Azure Functions"
+        "Azure Functions",
+        "SharePoint and Microsoft 365 integration",
+        "Connectors and APIs"
+      ]
+    },
+    {
+      "category": "Security, governance, and ALM",
+      "skills": [
+        "Dataverse security roles, business units, field security, and teams",
+        "SharePoint permission models",
+        "Solution lifecycle management",
+        "Azure DevOps",
+        "Environment promotion: development, test, production"
       ]
     },
     {
       "category": "GIS and data collection",
       "skills": [
-        "Survey123",
-        "Geographic information systems"
+        "ArcGIS Survey123",
+        "XLSForms"
+      ]
+    }
+  ],
+  "photo": "profile.webp",
+  "photoAlt": "Portrait of Patrick S. Mensah wearing a navy suit and light blue tie",
+  "education": [
+    {
+      "degree": "M.S. in Biostatistics",
+      "institution": "New Jersey Institute of Technology, NJ",
+      "completed": "May 2022"
+    },
+    {
+      "degree": "B.A. in Statistics",
+      "institution": "Rutgers University, New Brunswick, NJ",
+      "completed": "January 2020"
+    },
+    {
+      "degree": "B.Ed. in Mathematics",
+      "institution": "University for Development Studies, Ghana",
+      "completed": "May 2015"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Data Analyst 2 / Power Platform Developer",
+      "organization": "New York State Office of Information Technology Services",
+      "period": "May 2026 to present",
+      "highlights": [
+        "Design, develop, and deploy enterprise applications with Model-Driven Apps, Power Apps, Dataverse, Power Automate, and Power Pages, replacing legacy InfoPath and SharePoint-based solutions.",
+        "Design Dataverse data models, tables, relationships, business rules, calculated columns, and Business Process Flows for complex agency workflows.",
+        "Extend applications with custom pages, Power Fx components, JavaScript web resources, and client-side form scripts.",
+        "Build Power Automate cloud flows for approvals, notifications, document generation, and integrations across Microsoft 365.",
+        "Configure Dataverse security (business units, security roles, field security, teams) and design SharePoint permission models.",
+        "Take part in solution lifecycle management: packaging, environment deployment, version control, testing, and releases with Azure DevOps."
+      ]
+    },
+    {
+      "title": "AI Platform Engineer (Contract)",
+      "organization": "Eliassen Group",
+      "period": "July 2026 to August 2026",
+      "highlights": [
+        "Served as technical advisor to the Director of Emerging Technology on Power Platform architecture, security, governance, and enterprise application implementation.",
+        "Designed Dataverse security architecture, including security roles, business units, teams, and access controls, with Microsoft Entra ID security groups for centralized access management.",
+        "Supported development of an AI platform using Code Apps and its readiness for production deployment.",
+        "Designed and supported ALM across Development, Test, and Production environments, including controlled promotion of solutions.",
+        "Provided guidance on governance, environment strategy, security, and deployment practices ahead of go-live."
+      ]
+    },
+    {
+      "title": "Data Analyst / Power Platform Developer",
+      "organization": "New York Department of State",
+      "period": "October 2023 to May 2026",
+      "highlights": [
+        "Architected and developed the Fiscal Contract Manager, a Model-Driven App on Dataverse that automates procurement, contract management, voucher processing, and financial tracking and replaces manual Excel-based processes.",
+        "Led the modernization of legacy SharePoint and InfoPath business applications with Power Platform solutions.",
+        "Led the replatforming of the Fiscal Revenue System from Oracle to Microsoft Power Platform.",
+        "Led the migration of the Division of Community Services SharePoint-based applications to Dataverse and Model-Driven Apps.",
+        "Built Power Automate flows for approvals, notifications, document management, and data synchronization across Dataverse, SharePoint, and Microsoft 365.",
+        "Automated statewide data collection and reporting with ArcGIS Survey123, XLSForms, Power Automate, SharePoint, and Power BI.",
+        "Partnered with Internal Audit on analytical solutions using Power Query, SQL, Python, and R for compliance reviews, fraud detection, and operational reporting.",
+        "Delivered training and user support on Power Platform, Power Query, and Microsoft 365 to increase adoption across business units."
+      ]
+    },
+    {
+      "title": "Area Manager",
+      "organization": "Amazon",
+      "period": "June 2021 to October 2023",
+      "highlights": [
+        "Managed technology-enabled operations in a high-volume distribution environment and used operational data and reports to find bottlenecks and performance gaps.",
+        "Supported testing and User Acceptance Testing for system and process changes, documenting results and confirming that solutions met operational needs.",
+        "Gathered requirements from frontline teams and management, and supported rollout, training, and documentation for new processes.",
+        "Led teams of 50 to 100 associates in a highly automated environment."
       ]
     }
   ]

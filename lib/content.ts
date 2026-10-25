@@ -154,3 +154,9 @@ export function relatedArticles<T extends { slug: string; categorySlug: string |
     .slice(0, limit)
     .map((x) => x.a);
 }
+
+/** Keystatic may store the image as a bare filename or a full public path. Accept both. */
+export function photoSrc(photo: string | null | undefined): string | null {
+  if (!photo) return null;
+  return photo.startsWith('/') ? photo : `/images/profile/${photo}`;
+}

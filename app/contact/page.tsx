@@ -10,14 +10,16 @@ export default async function Contact() {
     <div className="wrap section two-col">
       <div>
         <h1>Contact</h1>
-        <p className="muted">Welcome inquiries: consulting and project work on the Power Platform and Dynamics 365, speaking and training, and technical collaboration.</p>
+        <p className="muted">Welcome inquiries: consulting and project work on Microsoft Power Platform and data solutions, speaking and training, and technical collaboration.</p>
         <ContactForm />
       </div>
-      <div>
-        <h2>Elsewhere</h2>
-        {profile?.email ? <p>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></p> : <p className="muted">Public email not set. Add it in the admin under Profile and site settings.</p>}
-        {profile?.links.length ? <ul>{profile.links.map((l) => <li key={l.label}><a href={l.url ?? '#'} rel="me noopener">{l.label}</a></li>)}</ul> : <p className="muted">No profile links added yet.</p>}
-      </div>
+      {(profile?.email || (profile?.links.length ?? 0) > 0) && (
+        <div>
+          <h2>Elsewhere</h2>
+          {profile?.email && <p>Email: <a href={`mailto:${profile.email}`}>{profile.email}</a></p>}
+          {profile && profile.links.length > 0 && <ul>{profile.links.map((l) => <li key={l.label}><a href={l.url ?? '#'} rel="me noopener">{l.label}</a></li>)}</ul>}
+        </div>
+      )}
     </div>
   );
 }
