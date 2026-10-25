@@ -1,0 +1,36 @@
+---
+title: "Demo: Choosing between lookup and many-to-many in Dataverse"
+subtitle: A short decision guide
+status: published
+kind: tutorial
+isDemo: true
+publishedAt: 2026-01-15
+updatedAt: null
+summary: Demo article showing the layout. A practical way to decide between 1:N and N:N relationships in a Dataverse model.
+category: dataverse
+tags:
+  - Dataverse
+  - Data modeling
+featured: true
+coverImage: null
+coverAlt: ""
+---
+
+This is **demo content** for layout evaluation. Replace it with your own writing.
+
+## When a lookup is enough
+
+If each row belongs to exactly one parent, use a one-to-many relationship with a lookup column.
+
+{% callout type="note" %}
+Lookups give you cascading behavior and simpler security reasoning than many-to-many.
+{% /callout %}
+
+## When you need many-to-many
+
+Use N:N when rows on both sides can relate to many rows on the other, and the relationship itself has no attributes.
+
+```javascript
+// Example: query related rows with the Web API
+const url = "/api/data/v9.2/accounts?$expand=contact_customer_accounts($select=fullname)";
+```

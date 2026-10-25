@@ -1,0 +1,88 @@
+{
+  "siteName": "Philant Technologies",
+  "name": "[Your Name]",
+  "tagline": "Power Platform developer, data specialist, and technical educator.",
+  "bio": "[Placeholder biography. Replace this text in the admin under Profile and site settings.]",
+  "email": "",
+  "links": [],
+  "certifications": [
+    {
+      "name": "PL-400: Power Platform Developer Associate",
+      "issuer": "Microsoft",
+      "earned": null,
+      "expires": null,
+      "credentialUrl": null
+    },
+    {
+      "name": "PL-200: Power Platform Functional Consultant Associate",
+      "issuer": "Microsoft",
+      "earned": null,
+      "expires": null,
+      "credentialUrl": null
+    },
+    {
+      "name": "PL-900: Power Platform Fundamentals",
+      "issuer": "Microsoft",
+      "earned": null,
+      "expires": null,
+      "credentialUrl": null
+    },
+    {
+      "name": "AZ-900: Azure Fundamentals",
+      "issuer": "Microsoft",
+      "earned": null,
+      "expires": null,
+      "credentialUrl": null
+    }
+  ],
+  "skillGroups": [
+    {
+      "category": "Power Platform",
+      "skills": [
+        "Power Apps (canvas and model-driven)",
+        "Power Automate",
+        "Dataverse",
+        "Power Pages",
+        "Power Fx"
+      ]
+    },
+    {
+      "category": "Dynamics 365",
+      "skills": [
+        "Customer engagement applications"
+      ]
+    },
+    {
+      "category": "Programming and development",
+      "skills": [
+        "JavaScript",
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "category": "Data and analytics",
+      "skills": [
+        "Power BI",
+        "Power Query",
+        "R",
+        "Statistical analysis"
+      ]
+    },
+    {
+      "category": "Cloud and integration",
+      "skills": [
+        "Azure",
+        "Microsoft Entra ID",
+        "Azure Functions"
+      ]
+    },
+    {
+      "category": "GIS and data collection",
+      "skills": [
+        "Survey123",
+        "Geographic information systems"
+      ]
+    }
+  ]
+}
