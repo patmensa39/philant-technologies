@@ -47,9 +47,9 @@ export default async function About() {
         </section>
       )}
       <div className="flow" style={{ maxWidth: 'var(--measure)', marginTop: 'var(--s6)' }}>
-        {text('Career goals and philosophy', about?.philosophy)}
+        {text('Career Goals and Philosophy', about?.philosophy)}
         {text('Currently learning', about?.learning)}
-        <p><Link href="/skills">Skills and certifications</Link> &middot; <Link href="/contact">Get in touch</Link></p>
+        <p><Link href="/skills">Skills and Certifications</Link> &middot; <Link href="/contact">Get in touch</Link></p>
       </div>
     </div>
   );
