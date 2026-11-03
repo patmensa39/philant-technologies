@@ -44,7 +44,8 @@ See `.env.example`. Never commit `.env.local`.
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Your live URL, used for canonical links, sitemap, and feed |
 | `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO` | `owner/repo` the admin commits to |
-| `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET` | Created by the Keystatic GitHub App setup |
+| `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | Created by the Keystatic GitHub App setup |
+| `KEYSTATIC_STORAGE` | Set to `github` locally only during the one-time GitHub App setup |
 | `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | Contact form delivery |
 
 The admin and its API return 404 in production unless `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO` is set.

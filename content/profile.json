@@ -18,7 +18,7 @@
     {
       "name": "Power Platform Developer Associate (PL-400)",
       "issuer": "Microsoft",
-      "earned": null,
+      "earned": "2026-08-01",
       "expires": null,
       "credentialId": "38F1A16385093371",
       "credentialUrl": null
@@ -26,7 +26,7 @@
     {
       "name": "Power Platform Functional Consultant (PL-200)",
       "issuer": "Microsoft",
-      "earned": null,
+      "earned": "2025-11-29",
       "expires": null,
       "credentialId": "B9187940BA6F71A8",
       "credentialUrl": null
@@ -34,7 +34,7 @@
     {
       "name": "Power Platform Fundamentals (PL-900)",
       "issuer": "Microsoft",
-      "earned": null,
+      "earned": "2024-09-13",
       "expires": null,
       "credentialId": "DFA81E7DCB89087B",
       "credentialUrl": null
@@ -42,7 +42,7 @@
     {
       "name": "Azure Fundamentals (AZ-900)",
       "issuer": "Microsoft",
-      "earned": null,
+      "earned": "2024-03-28",
       "expires": null,
       "credentialId": "2AC97AC05E442F45",
       "credentialUrl": null

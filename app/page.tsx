@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { getArticles, getProfile, getProjects, getResources, photoSrc } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
+import { PowerPlatformMap } from '@/components/PowerPlatformMap';
+import { formatDate } from '@/lib/format';
 
 export default async function Home() {
   const [profile, articles, projects, resources] = await Promise.all([getProfile(), getArticles(), getProjects(), getResources()]);
@@ -36,6 +38,8 @@ export default async function Home() {
         </div>
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, '\\u003c') }} />
+
+      <PowerPlatformMap />
 
       <section className="section" aria-labelledby="recent">
         <div className="wrap">
@@ -83,7 +87,13 @@ export default async function Home() {
         <section className="section" aria-labelledby="certs">
           <div className="wrap">
             <div className="section-head"><h2 id="certs">Certifications</h2><Link href="/skills">Skills and certifications</Link></div>
-            <ul className="tagrow" style={{ listStyle: 'none', padding: 0, margin: 0 }}>{certs.map((c) => <li key={c.name} className="pill" title={c.name}>{certCode(c.name)}</li>)}</ul>
+            <ul className="cert-list">{certs.map((c) => (
+              <li key={c.name}>
+                <span className="code">{certCode(c.name)}</span>
+                <span>{c.name.replace(/\s*\([A-Z]{2,3}-\d{3}\)/, '')}</span>
+                <span className="issued">{c.earned ? `Issued ${formatDate(c.earned)}` : 'Issue date to be added'}</span>
+              </li>
+            ))}</ul>
           </div>
         </section>
       )}
