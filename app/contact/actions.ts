@@ -1,36 +1,46 @@
 'use server';
 import { headers } from 'next/headers';
-import { contactSchema, rateLimited, type ContactState } from '@/lib/contact';
+import { buildEmail, contactSchema, fieldErrors, rateLimited, type ContactResult } from '@/lib/contact';
 
-export async function sendContact(_prev: ContactState, form: FormData): Promise<ContactState> {
-  // Honeypot: real visitors never fill this hidden field.
-  if (String(form.get('website') ?? '').length > 0) return { status: 'ok', message: 'Thanks. Your message was sent.' };
+const FAIL = 'Your message could not be sent. Please try again later or reach out on LinkedIn.';
 
-  const parsed = contactSchema.safeParse({ name: form.get('name'), email: form.get('email'), message: form.get('message') });
-  if (!parsed.success) {
-    const errors: NonNullable<ContactState['errors']> = {};
-    for (const i of parsed.error.issues) errors[i.path[0] as 'name' | 'email' | 'message'] ??= i.message;
-    return { status: 'error', message: 'Fix the highlighted fields and try again.', errors };
-  }
+/** Validates the message again on the server, then delivers it by email with Resend. Secrets stay on the server. */
+export async function sendContact(input: unknown): Promise<ContactResult> {
+  const raw = (input ?? {}) as Record<string, unknown>;
+
+  // Honeypot: real visitors never fill this hidden field. Bots get a quiet fake success.
+  if (typeof raw.website === 'string' && raw.website.length > 0) return { status: 'ok', message: 'Thank you. Your message has been sent.' };
+
+  const parsed = contactSchema.safeParse(raw);
+  if (!parsed.success) return { status: 'error', message: 'Please fix the highlighted fields and try again.', errors: fieldErrors(parsed.error) };
 
   const ip = (await headers()).get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  if (rateLimited(ip)) return { status: 'error', message: 'Too many messages. Wait a few minutes and try again.' };
+  if (rateLimited(ip)) return { status: 'error', message: 'Too many messages in a short time. Please wait a few minutes and try again.' };
 
   const key = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL;
-  const from = process.env.CONTACT_FROM_EMAIL ?? 'onboarding@resend.dev';
-  if (!key || !to) return { status: 'error', message: 'Messages cannot be delivered yet because email is not configured. Use the email address on this page instead.' };
+  if (!key) {
+    console.error('[contact] RESEND_API_KEY is not set. Add it in the hosting environment variables.');
+    return { status: 'error', message: FAIL };
+  }
+  const to = process.env.CONTACT_TO_EMAIL || 'patmensa39@gmail.com';
+  const from = process.env.CONTACT_FROM_EMAIL || 'Portfolio Contact <onboarding@resend.dev>';
+  const endpoint = process.env.RESEND_API_URL || 'https://api.resend.com/emails';
 
-  const { name, email, message } = parsed.data;
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to, reply_to: email, subject: `Website message from ${name}`.slice(0, 120), text: `From: ${name} <${email}>\n\n${message}` }),
+      body: JSON.stringify(buildEmail(parsed.data, { to, from })),
+      signal: AbortSignal.timeout(10_000),
     });
-    if (!res.ok) return { status: 'error', message: 'The message could not be sent. Try again later or use the email address on this page.' };
-    return { status: 'ok', message: 'Thanks. Your message was sent.' };
-  } catch {
-    return { status: 'error', message: 'The message could not be sent. Try again later or use the email address on this page.' };
+    if (!res.ok) {
+      // Logged for the site owner (visible in hosting logs). Never shown to visitors.
+      console.error(`[contact] Resend rejected the message: ${res.status} ${(await res.text()).slice(0, 300)}`);
+      return { status: 'error', message: FAIL };
+    }
+    return { status: 'ok', message: 'Thank you. Your message has been sent.' };
+  } catch (e) {
+    console.error('[contact] Could not reach the email service:', e instanceof Error ? e.message : e);
+    return { status: 'error', message: FAIL };
   }
 }

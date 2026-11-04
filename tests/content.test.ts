@@ -3,11 +3,12 @@ import { contactSchema, rateLimited } from '../lib/contact';
 
 describe('contactSchema', () => {
   it('accepts a valid message', () => {
-    expect(contactSchema.safeParse({ name: 'A', email: 'a@b.co', message: 'Hello there, friend.' }).success).toBe(true);
+    expect(contactSchema.safeParse({ name: 'A', email: 'a@b.co', subject: 'Hello', message: 'Hello there, friend.' }).success).toBe(true);
   });
-  it('rejects bad email and short message', () => {
-    const r = contactSchema.safeParse({ name: 'A', email: 'nope', message: 'short' });
+  it('requires every field and a valid email', () => {
+    const r = contactSchema.safeParse({ name: '', email: 'nope', subject: '', message: 'short' });
     expect(r.success).toBe(false);
+    if (!r.success) expect(r.error.issues.map((i) => i.path[0]).sort()).toEqual(['email', 'message', 'name', 'subject']);
   });
 });
 

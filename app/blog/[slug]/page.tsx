@@ -6,7 +6,9 @@ import { getArticle, getArticles, getProfile, formatDate, relatedArticles } from
 import { ArticleCard } from '@/components/ArticleCard';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+import { siteUrl } from '@/lib/site';
+
+const SITE = siteUrl();
 
 export async function generateStaticParams() {
   return (await getArticles()).map((a) => ({ slug: a.slug }));

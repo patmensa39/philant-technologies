@@ -4,13 +4,14 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { getProfile } from '@/lib/content';
+import { siteUrl } from '@/lib/site';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const base = siteUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(base),
   title: { default: 'Philant Technologies', template: '%s | Philant Technologies' },
-  description: 'Articles, projects, and resources on the Microsoft Power Platform, data, and software development.',
+  description: 'Portfolio of Patrick S. Mensah, a Microsoft Power Platform developer and data professional building business applications, automated workflows, and data solutions.',
   alternates: { canonical: '/', types: { 'application/rss+xml': '/feed.xml' } },
 };
 

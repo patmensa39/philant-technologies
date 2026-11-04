@@ -1,8 +1,47 @@
 {
-  "intro": "I build enterprise applications on the Microsoft Power Platform for New York State agencies, and I am a certified Power Platform developer. My work turns manual, spreadsheet-based, and legacy processes into secure, maintainable applications that people can rely on.",
-  "background": "I studied Mathematics Education in Ghana, Statistics at Rutgers University, and Biostatistics at the New Jersey Institute of Technology. That training shapes how I approach data models, analysis, and reporting: I want the data to be structured correctly before anyone builds on it.",
-  "interests": "Dataverse data modeling, model-driven apps, Power Automate, and the security and lifecycle practices that keep solutions safe to run in production. I also work with SQL, Python, R, Power BI, and GIS data collection with ArcGIS Survey123.",
-  "journey": "After operations and analysis work at Amazon, I moved into public-sector technology at the New York Department of State in 2023. There I built the Fiscal Contract Manager and led several migrations from SharePoint, InfoPath, and Oracle onto the Power Platform. In 2026 I joined the New York State Office of Information Technology Services and also advised on Power Platform architecture and security for an AI platform on a short contract.",
+  "intro": "I am a Microsoft Power Platform developer and data professional with a background in statistics and data analytics. I design business applications, automate workflows, and build data-driven solutions that help teams replace manual and legacy processes with systems that are secure, maintainable, and easy to use.",
+  "background": "My path into technology runs through mathematics and data. I studied Mathematics Education in Ghana, Statistics at Rutgers University, and Biostatistics at the New Jersey Institute of Technology. That training taught me to work carefully with structured data, to ask what the numbers actually show, and to explain results clearly. I bring those habits to every application I design.",
+  "interests": "The areas I enjoy most are where business processes, data, and technology meet.",
+  "journey": "I began in operations, using system data and reports to find bottlenecks and supporting the testing and rollout of technology-enabled processes. Seeing where tools fell short led me to build the solutions myself. I moved into data analysis and Power Platform development, creating model-driven apps, Power Apps, and cloud flows on Dataverse, working with SharePoint, and using Power BI, SQL, Python, and R for reporting and analysis.\n\nA recurring focus has been modernization: replacing legacy InfoPath and SharePoint-based solutions and migrating their data to Dataverse and other platforms, including moving a system off Oracle. Along the way I have given technical guidance on Power Platform architecture, security, and application lifecycle management, and I have trained colleagues to adopt the tools.",
   "philosophy": "To become a solution architect and technical leader, building innovative technology solutions that drive digital transformation and solve complex business problems. I believe in using technology, continuous learning, and collaboration to create secure, practical, and sustainable solutions that deliver meaningful impact.",
-  "learning": "Exploring AI-enabled solutions on the Power Platform, including Code Apps and AI Builder, and how governance, security, and ALM practices apply to them."
+  "learning": "Exploring AI-enabled solutions on the Power Platform, including Code Apps and AI Builder, and how governance, security, and ALM practices apply to them.",
+  "approach": "I start with the business process and the data behind it. I work with stakeholders to gather requirements, model the data so it can be secured and reported on, then build and test applications and automation in separate environments before release. I pay attention to security, lifecycle management, and the people who will use the solution, including training and support after launch.",
+  "interestAreas": [
+    {
+      "title": "Microsoft Power Platform development",
+      "description": "Building applications and automation with Power Apps, Power Automate, Power Pages, and Power Fx."
+    },
+    {
+      "title": "Business application development",
+      "description": "Turning requirements into model-driven and canvas apps that people can use without friction."
+    },
+    {
+      "title": "Workflow automation and process optimization",
+      "description": "Replacing manual hand-offs with approvals, notifications, and integrations that run reliably."
+    },
+    {
+      "title": "Dataverse and Dynamics 365",
+      "description": "Data modeling, security, and business logic on the platform behind customer engagement and custom business apps."
+    },
+    {
+      "title": "Data analytics and business intelligence",
+      "description": "Using SQL, Python, R, Power Query, and Power BI to turn data into decisions."
+    },
+    {
+      "title": "Enterprise application modernization",
+      "description": "Moving legacy applications to modern, maintainable platforms without losing the business logic that matters."
+    },
+    {
+      "title": "SharePoint solutions and legacy migration",
+      "description": "Working with SharePoint and legacy InfoPath applications, and migrating their data safely."
+    },
+    {
+      "title": "Cloud technologies and digital transformation",
+      "description": "Using Azure and Microsoft 365 services to connect systems and modernize how work gets done."
+    },
+    {
+      "title": "Practical AI in business solutions",
+      "description": "Exploring where AI Builder and other AI capabilities add real value to everyday business processes."
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "siteName": "Philant Technologies",
   "name": "Patrick S. Mensah",
-  "tagline": "Power Platform developer and data professional building enterprise applications for public-sector teams.",
-  "bio": "Certified Power Platform Developer who designs and deploys enterprise applications with Microsoft Power Platform, Dataverse, and integrated data solutions for New York State agencies. My work covers procurement, contracts, financial operations, and audit processes, built on a foundation in statistics, biostatistics, and data analytics.",
+  "tagline": "I turn business requirements into reliable applications, automated workflows, and data solutions on the Microsoft Power Platform.",
+  "bio": "I design and build business applications with Power Apps, Power Automate, Dataverse, and SharePoint, and develop reporting and analytics with Power BI, SQL, and Python. I specialize in modernizing legacy applications, including InfoPath solutions, and migrating their data to scalable platforms. My training in statistics and biostatistics shapes how I model data and communicate insight.",
   "email": "",
   "links": [
     {
@@ -19,17 +19,19 @@
       "name": "Power Platform Developer Associate (PL-400)",
       "issuer": "Microsoft",
       "earned": "2026-08-01",
-      "expires": null,
+      "expires": "2027-08-01",
       "credentialId": "38F1A16385093371",
-      "credentialUrl": null
+      "credentialUrl": null,
+      "certificateImage": "pl-400.webp"
     },
     {
       "name": "Power Platform Functional Consultant (PL-200)",
       "issuer": "Microsoft",
       "earned": "2025-11-29",
-      "expires": null,
+      "expires": "2027-11-29",
       "credentialId": "B9187940BA6F71A8",
-      "credentialUrl": null
+      "credentialUrl": null,
+      "certificateImage": "pl-200.webp"
     },
     {
       "name": "Power Platform Fundamentals (PL-900)",
@@ -37,7 +39,8 @@
       "earned": "2024-09-13",
       "expires": null,
       "credentialId": "DFA81E7DCB89087B",
-      "credentialUrl": null
+      "credentialUrl": null,
+      "certificateImage": "pl-900.webp"
     },
     {
       "name": "Azure Fundamentals (AZ-900)",
@@ -45,7 +48,8 @@
       "earned": "2024-03-28",
       "expires": null,
       "credentialId": "2AC97AC05E442F45",
-      "credentialUrl": null
+      "credentialUrl": null,
+      "certificateImage": "az-900.webp"
     }
   ],
   "skillGroups": [
@@ -182,5 +186,15 @@
         "Led teams of 50 to 100 associates in a highly automated environment."
       ]
     }
-  ]
+  ],
+  "roleTitle": "Power Platform Developer and Data Professional",
+  "heroHighlights": [
+    "Power Apps",
+    "Power Automate",
+    "Power BI",
+    "Dataverse",
+    "SharePoint",
+    "SQL and Python"
+  ],
+  "feeds": []
 }

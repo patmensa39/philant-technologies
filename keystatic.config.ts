@@ -32,6 +32,14 @@ export default config({
         background: fields.text({ label: 'Background and education', multiline: true }),
         interests: fields.text({ label: 'Technical interests', multiline: true }),
         journey: fields.text({ label: 'Professional journey', multiline: true }),
+        approach: fields.text({ label: 'How I work (approach to solving problems)', multiline: true }),
+        interestAreas: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Interest' }),
+            description: fields.text({ label: 'Short description', multiline: true }),
+          }),
+          { label: 'Professional interests', itemLabel: (i) => i.fields.title.value },
+        ),
         philosophy: fields.text({ label: 'Career goals and philosophy', multiline: true }),
         learning: fields.text({ label: 'Currently learning', multiline: true }),
       },
@@ -45,7 +53,9 @@ export default config({
         name: fields.text({ label: 'Your name', defaultValue: '[Your Name]' }),
         photo: fields.image({ label: 'Portrait photo', directory: 'public/images/profile', publicPath: '/images/profile/' }),
         photoAlt: fields.text({ label: 'Portrait alt text' }),
+        roleTitle: fields.text({ label: 'Role title shown above your name', defaultValue: 'Power Platform Developer and Data Professional' }),
         tagline: fields.text({ label: 'Tagline', defaultValue: '[Your professional tagline]' }),
+        heroHighlights: fields.array(fields.text({ label: 'Technology' }), { label: 'Homepage technology highlights', itemLabel: (t) => t.value }),
         bio: fields.text({ label: 'Short bio', multiline: true, defaultValue: '[Short biography. Replace with your own text.]' }),
         email: fields.text({ label: 'Public contact email' }),
         links: fields.array(
@@ -54,6 +64,13 @@ export default config({
             url: fields.url({ label: 'URL' }),
           }),
           { label: 'Professional profiles', itemLabel: (p) => p.fields.label.value },
+        ),
+        feeds: fields.array(
+          fields.object({
+            name: fields.text({ label: 'Source name (shown to visitors)' }),
+            url: fields.url({ label: 'RSS or Atom feed address' }),
+          }),
+          { label: 'External publication feeds (optional)', itemLabel: (f) => f.fields.name.value },
         ),
         skillGroups: fields.array(
           fields.object({
@@ -86,6 +103,7 @@ export default config({
             earned: fields.date({ label: 'Date earned' }),
             expires: fields.date({ label: 'Expiration (optional)' }),
             credentialId: fields.text({ label: 'Credential ID' }),
+            certificateImage: fields.image({ label: 'Certificate image', directory: 'public/images/certifications', publicPath: '/images/certifications/' }),
             credentialUrl: fields.url({ label: 'Credential URL' }),
           }),
           { label: 'Certifications', itemLabel: (c) => c.fields.name.value },
