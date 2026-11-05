@@ -163,26 +163,30 @@
       "issuer": "Microsoft",
       "earned": "2026-08-01",
       "expires": "2027-08-01",
-      "credentialId": "38F1A16385093371"
+      "credentialId": "38F1A16385093371",
+      "certificateImage": "/images/certifications/certifications/0/certificateImage.PNG"
     },
     {
       "name": "Power Platform Functional Consultant (PL-200)",
       "issuer": "Microsoft",
       "earned": "2025-11-29",
       "expires": "2027-11-29",
-      "credentialId": "B9187940BA6F71A8"
+      "credentialId": "B9187940BA6F71A8",
+      "certificateImage": "/images/certifications/certifications/1/certificateImage.PNG"
     },
     {
       "name": "Power Platform Fundamentals (PL-900)",
       "issuer": "Microsoft",
       "earned": "2024-09-13",
-      "credentialId": "DFA81E7DCB89087B"
+      "credentialId": "DFA81E7DCB89087B",
+      "certificateImage": "/images/certifications/certifications/2/certificateImage.PNG"
     },
     {
       "name": "Azure Fundamentals (AZ-900)",
       "issuer": "Microsoft",
       "earned": "2024-03-28",
-      "credentialId": "2AC97AC05E442F45"
+      "credentialId": "2AC97AC05E442F45",
+      "certificateImage": "/images/certifications/certifications/3/certificateImage.PNG"
     }
   ]
 }
