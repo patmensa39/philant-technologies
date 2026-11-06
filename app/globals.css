@@ -182,3 +182,81 @@ textarea { min-height: 9rem; width: 100%; }
 .crumbs a { color: var(--ink-2); }
 .crumbs a:hover { color: var(--accent); }
 .crumbs + .article-head { padding-top: var(--s4); }
+
+/* Power Platform ecosystem */
+.pp-head { display: flex; align-items: center; gap: var(--s4); margin-bottom: var(--s6); }
+.pp-head img { width: 56px; height: 56px; flex: none; }
+.pp-head h2, .pp-head p { margin: 0; }
+.pp-head p { margin-top: var(--s1); }
+.pp-map { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s5); position: relative; }
+.pp-item { display: flex; gap: var(--s4); align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s4) var(--s5); position: relative; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.pp-item:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 10%, transparent); }
+.pp-item img { width: 48px; height: 48px; flex: none; }
+.pp-item h3 { margin: 0 0 var(--s1); font-size: 1.05rem; }
+.pp-item p { margin: 0; color: var(--ink-2); font-size: .925rem; line-height: 1.45; }
+.pp-hub { border-color: var(--accent); background: var(--accent-soft); flex-direction: column; align-items: center; text-align: center; justify-content: center; gap: var(--s3); padding: var(--s5); }
+.pp-hub img { width: 88px; height: 88px; }
+.pp-hub h3 { font-size: 1.2rem; }
+.pp-hub p { color: var(--ink); }
+.pp-note { margin: var(--s5) 0 0; max-width: 70ch; }
+@media (min-width: 52rem) {
+  .pp-map { grid-template-columns: 1fr 1.15fr 1fr; column-gap: 4.5rem; row-gap: var(--s5); grid-template-areas: "apps hub automate" "pages hub ai"; align-items: stretch; }
+  .pp-hub { grid-area: hub; }
+  .pp-power-apps { grid-area: apps; } .pp-power-automate { grid-area: automate; } .pp-power-pages { grid-area: pages; } .pp-ai-builder { grid-area: ai; }
+  /* connector lines from each product toward the Dataverse hub */
+  .pp-node::after { content: ""; position: absolute; top: 50%; width: 4.5rem; height: 2px; background: var(--line); }
+  .pp-power-apps::after, .pp-power-pages::after { left: 100%; }
+  .pp-power-automate::after, .pp-ai-builder::after { right: 100%; }
+}
+@media (max-width: 51.99rem) {
+  .pp-map { grid-template-columns: 1fr; }
+  .pp-hub { order: -1; }
+}
+/* Certifications on the homepage */
+.cert-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+
+/* Hero: role title and technology chips */
+.eyebrow { margin: 0 0 var(--s3); color: var(--accent); font-weight: 650; font-size: .9rem; letter-spacing: .04em; text-transform: uppercase; }
+.chips { list-style: none; margin: var(--s4) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s2); }
+.chips li { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: .2rem .8rem; font-size: .85rem; color: var(--ink-2); }
+
+/* Certification cards and viewer (replaces the earlier .cert-list li rules) */
+.cert-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); display: flex; flex-direction: column; transition: border-color .15s ease, box-shadow .15s ease; }
+.cert-card:hover, .cert-card:focus-within { border-color: var(--accent); }
+.cert-open { display: grid; gap: var(--s1); text-align: left; width: 100%; padding: var(--s4) var(--s5); background: none; border: 0; color: inherit; font: inherit; border-radius: var(--radius); }
+button.cert-open { cursor: pointer; }
+.cert-open .code { color: var(--accent); font-weight: 700; }
+.cert-open .cert-name { font-weight: 600; }
+.cert-open .issued { color: var(--ink-2); font-size: .875rem; }
+.cert-cta { color: var(--accent); font-size: .875rem; font-weight: 600; margin-top: var(--s2); }
+.cert-verify { padding: 0 var(--s5) var(--s4); font-size: .875rem; }
+.cert-dialog { width: min(96vw, 1100px); max-height: 94vh; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); overflow: auto; }
+.cert-dialog::backdrop { background: rgb(5 12 20 / .72); }
+.cert-dialog-inner { padding: var(--s4) var(--s5) var(--s5); }
+.cert-dialog-head { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); margin-bottom: var(--s4); }
+.cert-dialog-head h3 { margin: 0; font-size: 1.1rem; }
+.cert-image { display: block; max-width: 100%; max-height: 72vh; width: auto; height: auto; margin: 0 auto; object-fit: contain; border-radius: var(--radius); }
+.cert-facts { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin: var(--s4) 0 var(--s2); }
+.cert-facts div { display: flex; gap: var(--s2); }
+.cert-facts dt { color: var(--ink-2); } .cert-facts dd { margin: 0; font-weight: 600; }
+.cert-links { margin: 0; font-size: .9rem; }
+body:has(dialog[open]) { overflow: hidden; }
+@media print { .cert-dialog { display: none !important; } }
+
+/* Publications */
+.pub-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s4); max-width: 52rem; }
+.pub-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s5); display: grid; gap: var(--s2); }
+.pub-item h3 { margin: 0; } .pub-item h3 a { color: var(--ink); text-decoration: none; } .pub-item h3 a:hover { color: var(--accent); }
+.pub-item p { margin: 0; color: var(--ink-2); }
+.subscribe { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: end; margin: var(--s5) 0 var(--s6); max-width: 52rem; }
+.subscribe label { flex: 1 1 18rem; } .subscribe input { width: 100%; font-family: var(--mono); font-size: .85rem; }
+.skeleton { background: linear-gradient(90deg, var(--line), transparent, var(--line)); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: var(--radius); min-height: 7rem; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* About: interest cards */
+.interest-grid { display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); margin-top: var(--s4); list-style: none; padding: 0; }
+.interest-grid li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s4) var(--s5); border-top: 3px solid var(--accent); }
+.interest-grid h3 { margin: 0 0 var(--s2); font-size: 1rem; } .interest-grid p { margin: 0; color: var(--ink-2); font-size: .925rem; line-height: 1.5; }
+.field { display: grid; gap: var(--s1); }
+.field > label { font-weight: 600; font-size: .9rem; }
+.form input:disabled, .form textarea:disabled { opacity: .7; }

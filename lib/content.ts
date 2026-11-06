@@ -161,6 +161,12 @@ export function photoSrc(photo: string | null | undefined): string | null {
   return photo.startsWith('/') ? photo : `/images/profile/${photo}`;
 }
 
+/** Resolve a Keystatic image value (bare filename or full public path) against a public folder. */
+export function imageSrc(dir: string, value: string | null | undefined): string | null {
+  if (!value) return null;
+  return value.startsWith('/') ? value : `${dir.replace(/\/$/, '')}/${value}`;
+}
+
 export const DEFAULT_RESUME = '/Patrick-Mensah-Resume.pdf';
 export function resumeSrc(resume: string | null | undefined): string {
   if (!resume) return DEFAULT_RESUME;
