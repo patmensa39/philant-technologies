@@ -189,7 +189,8 @@
       "issuer": "Microsoft",
       "earned": "2024-03-28",
       "credentialId": "2AC97AC05E442F45",
-      "certificateImage": "/images/certifications/certifications/3/certificateImage.PNG"
+      "certificateImage": "/images/certifications/certifications/3/certificateImage.PNG",
+      "credentialUrl": "https://learn.microsoft.com/api/credentials/share/en-us/PatrickMensah-4160/2AC97AC05E442F45?sharingId=F1CB55F7B66B47FC"
     }
   ]
 }
