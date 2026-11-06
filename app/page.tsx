@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getArticles, getProfile, getProjects, getResources, photoSrc } from '@/lib/content';
+import { getArticles, getProfile, getProjects, getResources, photoSrc, resumeSrc } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
 
 export default async function Home() {
@@ -31,7 +31,7 @@ export default async function Home() {
           <div className="actions">
             <Link className="btn" href="/projects">Explore my work</Link>
             <Link className="btn ghost" href="/about">About me</Link>
-            <a className="btn ghost" href="/Patrick-Mensah-Resume.pdf" download>Download resume</a>
+            <a className="btn ghost" href={resumeSrc(profile?.resume)} download>Download resume</a>
             <Link className="btn ghost" href="/contact">Get in touch</Link>
           </div>
         </div>

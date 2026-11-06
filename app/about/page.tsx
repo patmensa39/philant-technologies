@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAbout, getProfile, photoSrc } from '@/lib/content';
+import { getAbout, getProfile, photoSrc, resumeSrc } from '@/lib/content';
 
 export const metadata: Metadata = { title: 'About', alternates: { canonical: '/about' } };
 
@@ -49,7 +49,7 @@ export default async function About() {
       <div className="flow" style={{ maxWidth: 'var(--measure)', marginTop: 'var(--s6)' }}>
         {text('Career Goals and Philosophy', about?.philosophy)}
         {text('Currently learning', about?.learning)}
-        <p><a href="/Patrick-Mensah-Resume.pdf" download>Download resume (PDF)</a> &middot; <Link href="/skills">Skills and Certifications</Link> &middot; <Link href="/contact">Get in touch</Link></p>
+        <p><a href={resumeSrc(profile?.resume)} download>Download resume (PDF)</a> &middot; <Link href="/skills">Skills and Certifications</Link> &middot; <Link href="/contact">Get in touch</Link></p>
       </div>
     </div>
   );
