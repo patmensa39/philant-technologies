@@ -23,7 +23,7 @@ Keystatic signs you in through a GitHub App, so only people with write access to
 1. On your computer, in the project folder, create a file named `.env.local` containing:
    ```
    NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=patmensa39/philant-technologies
-   KEYSTATIC_STORAGE=github
+   NEXT_PUBLIC_KEYSTATIC_STORAGE=github
    ```
 2. Run `npm run dev`, open `http://localhost:3000/keystatic`, and follow the prompt to create a GitHub App. When it asks for the deployed site address, enter your live address from step 2.
 3. Keystatic writes the generated values into a local `.env` file. That file is ignored by Git, so it is never committed.

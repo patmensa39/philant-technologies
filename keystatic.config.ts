@@ -16,7 +16,7 @@ const status = fields.select({
 
 export default config({
   storage:
-    repo && (process.env.NODE_ENV === 'production' || process.env.KEYSTATIC_STORAGE === 'github')
+    repo && (process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === 'github')
       ? { kind: 'github', repo }
       : { kind: 'local' },
 

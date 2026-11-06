@@ -9,6 +9,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Keystatic's one-time GitHub setup moves the browser to 127.0.0.1 during local development.
+  allowedDevOrigins: ['127.0.0.1'],
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }];
   },
