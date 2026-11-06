@@ -164,7 +164,8 @@
       "earned": "2026-08-01",
       "expires": "2027-08-01",
       "credentialId": "38F1A16385093371",
-      "certificateImage": "/images/certifications/certifications/0/certificateImage.PNG"
+      "certificateImage": "/images/certifications/certifications/0/certificateImage.PNG",
+      "credentialUrl": "https://learn.microsoft.com/api/credentials/share/en-us/PatrickMensah-4160/38F1A16385093371?sharingId=F1CB55F7B66B47FC"
     },
     {
       "name": "Power Platform Functional Consultant (PL-200)",
@@ -172,14 +173,16 @@
       "earned": "2025-11-29",
       "expires": "2027-11-29",
       "credentialId": "B9187940BA6F71A8",
-      "certificateImage": "/images/certifications/certifications/1/certificateImage.PNG"
+      "certificateImage": "/images/certifications/certifications/1/certificateImage.PNG",
+      "credentialUrl": "https://learn.microsoft.com/api/credentials/share/en-us/PatrickMensah-4160/B9187940BA6F71A8?sharingId=F1CB55F7B66B47FC"
     },
     {
       "name": "Power Platform Fundamentals (PL-900)",
       "issuer": "Microsoft",
       "earned": "2024-09-13",
       "credentialId": "DFA81E7DCB89087B",
-      "certificateImage": "/images/certifications/certifications/2/certificateImage.PNG"
+      "certificateImage": "/images/certifications/certifications/2/certificateImage.PNG",
+      "credentialUrl": "https://learn.microsoft.com/api/credentials/share/en-us/PatrickMensah-4160/DFA81E7DCB89087B?sharingId=F1CB55F7B66B47FC"
     },
     {
       "name": "Azure Fundamentals (AZ-900)",
