@@ -30,17 +30,15 @@ export default async function Home() {
         )}
         <div className="hero-text">
           {profile?.roleTitle && <p className="eyebrow">{profile.roleTitle}</p>}
-          <h1>{profile?.name ?? '[Your Name]'}</h1>
+          <h1>{profile?.name ?? 'Patrick S. Mensah'}</h1>
           <p className="lede">{profile?.tagline}</p>
           <p className="muted" style={{ maxWidth: '54ch' }}>{profile?.bio}</p>
           {(profile?.heroHighlights.length ?? 0) > 0 && (
             <ul className="chips" aria-label="Core technologies">{profile!.heroHighlights.map((t) => <li key={t}>{t}</li>)}</ul>
           )}
           <div className="actions">
-            <Link className="btn" href="/projects">Explore my work</Link>
-            <Link className="btn ghost" href="/about">About me</Link>
-            <a className="btn ghost" href={resumeSrc(profile?.resume)} download>Download resume</a>
-            <Link className="btn ghost" href="/contact">Get in touch</Link>
+            <Link className="btn" href="/contact">Get in touch</Link>
+            <a className="text-link" href={resumeSrc(profile?.resume)} download>Download resume (PDF)</a>
           </div>
         </div>
       </div>

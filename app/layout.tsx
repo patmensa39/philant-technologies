@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { getProfile } from '@/lib/content';
+import { getProfile, resumeSrc } from '@/lib/content';
 import { siteUrl } from '@/lib/site';
 
 const base = siteUrl();
@@ -26,7 +26,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body>
         <a className="skip" href="#main">Skip to content</a>
-        <Header name={name} />
+        <Header name={name} resumeHref={resumeSrc(profile?.resume)} />
         <main id="main">{children}</main>
         <Footer name={name} links={profile?.links ?? []} />
       </body>
