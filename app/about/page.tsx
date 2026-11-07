@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { getAbout, getProfile, photoSrc, resumeSrc } from '@/lib/content';
 
@@ -20,8 +21,7 @@ export default async function About() {
           <p className="muted" style={{ fontSize: '1.2rem' }}>{about?.intro}</p>
         </div>
         {photo && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={photo} alt={profile?.photoAlt || ''} width={800} height={800} />
+          <Image src={photo} alt={profile?.photoAlt || ''} width={800} height={800} sizes="(max-width: 52rem) 10rem, 14rem" />
         )}
       </div>
       <div className="flow" style={{ maxWidth: 'var(--measure)' }}>

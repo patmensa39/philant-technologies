@@ -9,6 +9,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Image quality levels the site may request: 75 is the default, 85 keeps certificate text sharp.
+  images: { qualities: [75, 85] },
   // Keystatic's one-time GitHub setup moves the browser to 127.0.0.1 during local development.
   allowedDevOrigins: ['127.0.0.1'],
   async headers() {

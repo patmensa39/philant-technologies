@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getArticles, getProfile, getProjects, getResources, photoSrc, resumeSrc } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -23,8 +24,8 @@ export default async function Home() {
       <div className="wrap hero">
         {photo && (
           <figure className="portrait">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={photo} alt={profile?.photoAlt || `Portrait of ${profile?.name ?? 'the site owner'}`} width={800} height={800} fetchPriority="high" />
+            {/* Resized and converted to WebP automatically, so any photo uploaded in the admin stays fast. */}
+            <Image src={photo} alt={profile?.photoAlt || `Portrait of ${profile?.name ?? 'the site owner'}`} width={800} height={800} sizes="(max-width: 52rem) 16rem, 32rem" preload />
           </figure>
         )}
         <div className="hero-text">

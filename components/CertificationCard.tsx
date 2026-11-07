@@ -1,6 +1,10 @@
 'use client';
+import Image from 'next/image';
 import { useId, useRef } from 'react';
 import type { CertView } from '@/lib/certs';
+
+/** Slightly higher than the default so small certificate text stays sharp. */
+const CERT_QUALITY = 85;
 
 /** A certification card. When a certificate image exists, selecting the card opens it in an accessible dialog. */
 export function CertificationCard({ cert, compact = false }: { cert: CertView; compact?: boolean }) {
@@ -44,8 +48,8 @@ export function CertificationCard({ cert, compact = false }: { cert: CertView; c
               <h3 id={titleId}>{cert.name}</h3>
               <button type="button" className="icon-btn" onClick={() => dialog.current?.close()}>Close</button>
             </div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="cert-image" src={cert.image} alt={cert.imageAlt} decoding="async" loading="lazy" />
+            {/* Served as a compressed WebP sized for the viewer; the original upload is untouched and linked below. */}
+            <Image className="cert-image" src={cert.image} alt={cert.imageAlt} width={1400} height={933} quality={CERT_QUALITY} sizes="(max-width: 1100px) 96vw, 1100px" />
             <dl className="cert-facts">
               {cert.issued && <div><dt>Issued</dt><dd>{cert.issued}</dd></div>}
               {cert.expires && <div><dt>Expires</dt><dd>{cert.expires}</dd></div>}
