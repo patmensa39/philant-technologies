@@ -3,7 +3,7 @@ import { getArticles } from '@/lib/content';
 import { BlogBrowser } from '@/components/BlogBrowser';
 import { ComingSoon } from '@/components/ComingSoon';
 
-export const metadata: Metadata = { title: 'Blog', alternates: { canonical: '/blog' } };
+export const metadata: Metadata = { title: 'Blog', description: 'Tutorials, case studies, and reflections on Power Apps, Power Automate, Dataverse, Power BI, and data by Patrick S. Mensah.', alternates: { canonical: '/blog' } };
 
 export default async function Blog() {
   const articles = await getArticles();

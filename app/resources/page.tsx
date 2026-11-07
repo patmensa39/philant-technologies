@@ -3,7 +3,7 @@ import { getResources } from '@/lib/content';
 import { Browser } from '@/components/Browser';
 import { ComingSoon } from '@/components/ComingSoon';
 
-export const metadata: Metadata = { title: 'Presentations and resources', alternates: { canonical: '/resources' } };
+export const metadata: Metadata = { title: 'Presentations and resources', description: 'Slide decks, guides, templates, and diagrams on the Microsoft Power Platform and data by Patrick S. Mensah.', alternates: { canonical: '/resources' } };
 const TYPES = [
   { value: 'presentation', label: 'Presentation' }, { value: 'pdf', label: 'PDF document' }, { value: 'diagram', label: 'Diagram' },
   { value: 'template', label: 'Template or checklist' }, { value: 'code', label: 'Sample code' },

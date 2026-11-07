@@ -5,7 +5,7 @@ import { formatDate } from '@/lib/format';
 import { siteUrl } from '@/lib/site';
 import { CopyFeedAddress } from '@/components/CopyFeedAddress';
 
-export const metadata: Metadata = { title: 'Publications and RSS', alternates: { canonical: '/publications' } };
+export const metadata: Metadata = { title: 'Publications and RSS', description: 'Latest writing from Philant Technologies, with an RSS feed to follow new articles in any feed reader.', alternates: { canonical: '/publications' } };
 /** External feeds are refreshed at most once an hour. */
 export const revalidate = 3600;
 

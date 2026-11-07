@@ -2,6 +2,9 @@ import { getArticles } from '@/lib/content';
 import { buildRss } from '@/lib/feeds';
 import { siteUrl } from '@/lib/site';
 
+/** Built once at deploy time (the feed only changes when content is published, which triggers a new deploy). */
+export const dynamic = 'force-static';
+
 export async function GET() {
   const base = siteUrl();
   const articles = await getArticles();

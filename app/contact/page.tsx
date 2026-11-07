@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
 import { getProfile } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'Contact', alternates: { canonical: '/contact' } };
+export const metadata: Metadata = { title: 'Contact', description: 'Contact Patrick S. Mensah about job opportunities, technical collaboration, or questions about the Microsoft Power Platform and data.', alternates: { canonical: '/contact' } };
 
 export default async function Contact() {
   const profile = await getProfile();

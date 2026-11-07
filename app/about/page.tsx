@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getAbout, getProfile, photoSrc, resumeSrc } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'About', alternates: { canonical: '/about' } };
+export const metadata: Metadata = { title: 'About', description: 'Background, education, experience, and working approach of Patrick S. Mensah, a Microsoft Power Platform developer and data professional.', alternates: { canonical: '/about' } };
 
 export default async function About() {
   const [about, profile] = await Promise.all([getAbout(), getProfile()]);

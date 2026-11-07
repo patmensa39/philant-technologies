@@ -3,7 +3,7 @@ import { getProfile } from '@/lib/content';
 import { toCertView } from '@/lib/certs';
 import { CertificationCard } from '@/components/CertificationCard';
 
-export const metadata: Metadata = { title: 'Skills and certifications', alternates: { canonical: '/skills' } };
+export const metadata: Metadata = { title: 'Skills and certifications', description: 'Technical skills and Microsoft certifications of Patrick S. Mensah across Power Platform, data and analytics, cloud, security, and ALM.', alternates: { canonical: '/skills' } };
 
 export default async function Skills() {
   const profile = await getProfile();

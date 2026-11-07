@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Privacy', alternates: { canonical: '/privacy' } };
+export const metadata: Metadata = { title: 'Privacy', description: 'What this site collects, which services handle it, and how the contact form works.', alternates: { canonical: '/privacy' } };
 export default function Privacy() {
   return (
     <div className="wrap section"><article className="prose" style={{ maxWidth: 'var(--measure)' }}>

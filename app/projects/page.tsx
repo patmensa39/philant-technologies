@@ -3,7 +3,7 @@ import { getProjects } from '@/lib/content';
 import { Browser } from '@/components/Browser';
 import { ComingSoon } from '@/components/ComingSoon';
 
-export const metadata: Metadata = { title: 'Projects', alternates: { canonical: '/projects' } };
+export const metadata: Metadata = { title: 'Projects', description: 'Project case studies by Patrick S. Mensah: business applications, automated workflows, and data solutions on the Microsoft Power Platform.', alternates: { canonical: '/projects' } };
 export const STAGES = [
   { value: 'in-progress', label: 'In progress' }, { value: 'completed', label: 'Completed' },
   { value: 'experimental', label: 'Experimental' }, { value: 'archived', label: 'Archived' },
