@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SiteChrome } from '@/components/SiteChrome';
 import { getProfile, resumeSrc } from '@/lib/content';
 import { siteUrl } from '@/lib/site';
 
@@ -25,10 +26,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}` }} />
       </head>
       <body>
-        <a className="skip" href="#main">Skip to content</a>
-        <Header name={name} resumeHref={resumeSrc(profile?.resume)} />
+        <SiteChrome>
+          <a className="skip" href="#main">Skip to content</a>
+          <Header name={name} resumeHref={resumeSrc(profile?.resume)} />
+        </SiteChrome>
         <main id="main">{children}</main>
-        <Footer name={name} links={profile?.links ?? []} />
+        <SiteChrome>
+          <Footer name={name} links={profile?.links ?? []} />
+        </SiteChrome>
       </body>
     </html>
   );
