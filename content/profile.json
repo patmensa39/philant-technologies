@@ -3,6 +3,7 @@
   "name": "Patrick S. Mensah",
   "photo": "/images/profile/photo.png",
   "photoAlt": "Portrait of Patrick S. Mensah wearing a navy suit and light blue tie",
+  "resume": "/files/resume/resume.pdf",
   "tagline": "I turn business requirements into reliable applications, automated workflows, and data solutions on the Microsoft Power Platform.",
   "heroHighlights": [
     "Power Apps",
@@ -143,18 +144,15 @@
   "education": [
     {
       "degree": "M.S. in Biostatistics",
-      "institution": "New Jersey Institute of Technology, New Jersey",
-      "completed": ""
+      "institution": "New Jersey Institute of Technology, New Jersey"
     },
     {
       "degree": "B.A. in Statistics",
-      "institution": "Rutgers University, New Brunswick, New Jersey",
-      "completed": ""
+      "institution": "Rutgers University, New Brunswick, New Jersey"
     },
     {
       "degree": "B.Ed. in Mathematics",
-      "institution": "University for Development Studies, Ghana",
-      "completed": ""
+      "institution": "University for Development Studies, Ghana"
     }
   ],
   "certifications": [
