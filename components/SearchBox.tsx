@@ -1,15 +1,19 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import type { SearchRecord } from '@/lib/content';
+
+const noSubscribe = () => () => {};
+/** The ?q= value in the address bar, read on the client only (empty on the server). */
+const useUrlQuery = () => useSyncExternalStore(noSubscribe, () => new URLSearchParams(location.search).get('q') ?? '', () => '');
 
 export function SearchBox() {
   const [records, setRecords] = useState<SearchRecord[] | null>(null);
   const [failed, setFailed] = useState(false);
-  const [q, setQ] = useState('');
+  const urlQuery = useUrlQuery();
+  const [typed, setQ] = useState<string | null>(null);
+  const q = typed ?? urlQuery;
   useEffect(() => {
-    const initial = new URLSearchParams(location.search).get('q');
-    if (initial) setQ(initial);
     fetch('/search-index.json').then((r) => (r.ok ? r.json() : Promise.reject())).then(setRecords).catch(() => setFailed(true));
   }, []);
   const results = useMemo(() => {

@@ -2,23 +2,38 @@ import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { toCertView } from '../lib/certs';
 
-const profile = JSON.parse(readFileSync('content/profile.json', 'utf8'));
-const expected: Record<string, { image: string; issued: string; id: string }> = {
-  'PL-200': { image: '/images/certifications/pl-200.webp', issued: 'November 29, 2025', id: 'B9187940BA6F71A8' },
-  'PL-400': { image: '/images/certifications/pl-400.webp', issued: 'August 1, 2026', id: '38F1A16385093371' },
-  'PL-900': { image: '/images/certifications/pl-900.webp', issued: 'September 13, 2024', id: 'DFA81E7DCB89087B' },
-  'AZ-900': { image: '/images/certifications/az-900.webp', issued: 'March 28, 2024', id: '2AC97AC05E442F45' },
-};
+/**
+ * Certifications are managed in the Keystatic admin, so these tests check the shape of the data
+ * (every certification has an image and valid dates) rather than specific file names or values.
+ */
+type CertRecord = Parameters<typeof toCertView>[0];
+const profile = JSON.parse(readFileSync('content/profile.json', 'utf8')) as { certifications?: CertRecord[] };
+const certs = profile.certifications ?? [];
+
+const isValidDate = (s: unknown): s is string =>
+  typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(new Date(`${s}T00:00:00Z`).getTime());
 
 describe('certifications', () => {
-  const views = profile.certifications.map(toCertView);
-  it('has the four certifications, each with its own image, exact issue date, and credential ID', () => {
-    expect(views.map((v: { code: string }) => v.code).sort()).toEqual(Object.keys(expected).sort());
-    for (const v of views) expect(v).toMatchObject({ image: expected[v.code].image, issued: expected[v.code].issued, credentialId: expected[v.code].id });
+  it('has at least one certification', () => {
+    expect(certs.length).toBeGreaterThan(0);
   });
-  it('never reuses an image and every image file exists', () => {
-    const imgs = views.map((v: { image: string }) => v.image);
-    expect(new Set(imgs).size).toBe(imgs.length);
-    for (const i of imgs) expect(existsSync(`public${i}`)).toBe(true);
+
+  it.each(certs.map((c) => [c.name, c] as const))('%s has a name, an image, and valid dates', (_name, c) => {
+    expect(c.name.trim()).not.toBe('');
+    expect(isValidDate(c.earned)).toBe(true);
+    if (c.expires) {
+      expect(isValidDate(c.expires)).toBe(true);
+      expect(c.expires > (c.earned ?? '')).toBe(true);
+    }
+    const view = toCertView(c);
+    expect(view.image).toMatch(/^\//);
+    expect(view.issued).not.toBeNull();
+  });
+
+  it('every certificate image file exists in the public folder', () => {
+    for (const c of certs) {
+      const image = toCertView(c).image;
+      expect(image && existsSync(`public${image}`), `missing image for ${c.name}: ${image}`).toBe(true);
+    }
   });
 });

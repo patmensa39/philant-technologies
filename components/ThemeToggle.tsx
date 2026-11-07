@@ -1,24 +1,33 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+
+type Theme = 'light' | 'dark';
+const EVENT = 'themechange';
+const DARK_QUERY = '(prefers-color-scheme: dark)';
+
+/** The theme in effect: a saved choice (applied to <html> before paint by the layout script), else the system setting. */
+function currentTheme(): Theme {
+  const t = document.documentElement.dataset.theme;
+  if (t === 'light' || t === 'dark') return t;
+  return matchMedia(DARK_QUERY).matches ? 'dark' : 'light';
+}
+
+function subscribe(onChange: () => void) {
+  const mq = matchMedia(DARK_QUERY);
+  mq.addEventListener('change', onChange);
+  window.addEventListener(EVENT, onChange);
+  return () => { mq.removeEventListener('change', onChange); window.removeEventListener(EVENT, onChange); };
+}
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'light' || saved === 'dark') setTheme(saved);
-      else setTheme(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    } catch {
-      setTheme('light');
-    }
-  }, []);
+  // null on the server, so the first render matches the static HTML.
+  const theme = useSyncExternalStore<Theme | null>(subscribe, currentTheme, () => null);
 
   function toggle() {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
+    const next: Theme = currentTheme() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch { /* storage unavailable */ }
+    window.dispatchEvent(new Event(EVENT));
   }
 
   return (
