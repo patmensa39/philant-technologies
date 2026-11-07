@@ -90,7 +90,7 @@
   "experience": [
     {
       "title": "Data Analyst 2 / Power Platform Developer",
-      "organization": "State government agency (information technology)",
+      "organization": "New York State Office of Information Technology Services",
       "period": "May 2026 to present",
       "highlights": [
         "Design, develop, and deploy enterprise applications with Model-Driven Apps, Power Apps, Dataverse, Power Automate, and Power Pages, replacing legacy InfoPath and SharePoint-based solutions.",
@@ -103,7 +103,7 @@
     },
     {
       "title": "AI Platform Engineer (Contract)",
-      "organization": "IT consulting firm (contract role)",
+      "organization": "Eliassen Group",
       "period": "July 2026 to August 2026",
       "highlights": [
         "Served as technical advisor to technology leadership on Power Platform architecture, security, governance, and enterprise application implementation.",
@@ -115,7 +115,7 @@
     },
     {
       "title": "Data Analyst / Power Platform Developer",
-      "organization": "State government agency",
+      "organization": "New York Department of State",
       "period": "October 2023 to May 2026",
       "highlights": [
         "Architected and developed a model-driven app on Dataverse that automates a multi-step business process end to end, replacing manual Excel-based tracking.",
@@ -130,7 +130,7 @@
     },
     {
       "title": "Area Manager",
-      "organization": "Large e-commerce and logistics company",
+      "organization": "Amazon",
       "period": "June 2021 to October 2023",
       "highlights": [
         "Managed technology-enabled operations in a high-volume distribution environment and used operational data and reports to find bottlenecks and performance gaps.",
