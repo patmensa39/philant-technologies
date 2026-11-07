@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useId, useRef } from 'react';
+import { useId, useRef, useState } from 'react';
 import type { CertView } from '@/lib/certs';
 
 /** Slightly higher than the default so small certificate text stays sharp. */
@@ -10,6 +10,11 @@ const CERT_QUALITY = 85;
 export function CertificationCard({ cert, compact = false }: { cert: CertView; compact?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  // The image is added the first time the viewer opens, so it starts loading immediately
+  // (browsers do not reliably lazy-load images inside a dialog) and costs nothing until then.
+  // It stays afterwards, so reopening is instant.
+  const [opened, setOpened] = useState(false);
+  const show = () => { setOpened(true); dialog.current?.showModal(); };
 
   const summary = (
     <>
@@ -27,7 +32,7 @@ export function CertificationCard({ cert, compact = false }: { cert: CertView; c
   return (
     <li className="cert-card">
       {cert.image ? (
-        <button type="button" className="cert-open" aria-haspopup="dialog" onClick={() => dialog.current?.showModal()}>
+        <button type="button" className="cert-open" aria-haspopup="dialog" onClick={show}>
           {summary}
           <span className="cert-cta">View certificate</span>
         </button>
@@ -49,7 +54,7 @@ export function CertificationCard({ cert, compact = false }: { cert: CertView; c
               <button type="button" className="icon-btn" onClick={() => dialog.current?.close()}>Close</button>
             </div>
             {/* Served as a compressed WebP sized for the viewer; the original upload is untouched and linked below. */}
-            <Image className="cert-image" src={cert.image} alt={cert.imageAlt} width={1400} height={933} quality={CERT_QUALITY} sizes="(max-width: 1100px) 96vw, 1100px" />
+            {opened && <Image className="cert-image" src={cert.image} alt={cert.imageAlt} width={1400} height={933} quality={CERT_QUALITY} sizes="(max-width: 1100px) 96vw, 1100px" loading="eager" />}
             <dl className="cert-facts">
               {cert.issued && <div><dt>Issued</dt><dd>{cert.issued}</dd></div>}
               {cert.expires && <div><dt>Expires</dt><dd>{cert.expires}</dd></div>}
