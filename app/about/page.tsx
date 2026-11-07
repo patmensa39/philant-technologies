@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAbout, getProfile, photoSrc, resumeSrc } from '@/lib/content';
+import { getAbout, getProfile, photoSrc } from '@/lib/content';
 
 export const metadata: Metadata = { title: 'About', description: 'Background, education, experience, and working approach of Patrick S. Mensah, a Microsoft Power Platform developer and data professional.', alternates: { canonical: '/about' } };
 
@@ -62,7 +62,7 @@ export default async function About() {
       <div className="flow" style={{ maxWidth: 'var(--measure)', marginTop: 'var(--s6)' }}>
         {text('Career goals and philosophy', about?.philosophy)}
         {text('Currently learning', about?.learning)}
-        <p><a href={resumeSrc(profile?.resume)} download>Download resume (PDF)</a> &middot; <Link href="/skills">Skills and certifications</Link> &middot; <Link href="/contact">Get in touch</Link></p>
+        <p><Link href="/resume">View resume</Link> &middot; <Link href="/skills">Skills and certifications</Link> &middot; <Link href="/contact">Get in touch</Link></p>
       </div>
     </div>
   );

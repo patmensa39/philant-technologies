@@ -26,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const fixed: [string, Date | null][] = [
     ['', built], ['/about', built], ['/blog', newestArticle ?? built], ['/publications', newestArticle ?? built],
-    ['/projects', built], ['/resources', newestResource ?? built], ['/skills', built], ['/contact', built], ['/privacy', built],
+    ['/projects', built], ['/resources', newestResource ?? built], ['/skills', built], ['/resume', built], ['/contact', built], ['/privacy', built],
   ];
   return [
     ...fixed.map(([u, d]) => ({ url: base + u, lastModified: d ?? built })),

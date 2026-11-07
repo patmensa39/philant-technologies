@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getArticles, getProfile, getProjects, getResources, photoSrc, resumeSrc } from '@/lib/content';
+import { getArticles, getProfile, getProjects, getResources, photoSrc } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
 import { siteUrl } from '@/lib/site';
 import { PowerPlatformMap } from '@/components/PowerPlatformMap';
@@ -38,7 +38,7 @@ export default async function Home() {
           )}
           <div className="actions">
             <Link className="btn" href="/contact">Get in touch</Link>
-            <a className="text-link" href={resumeSrc(profile?.resume)} download>Download resume (PDF)</a>
+            <Link className="text-link" href="/resume">View resume</Link>
           </div>
         </div>
       </div>
