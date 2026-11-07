@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/components/ContactForm';
 import { getProfile } from '@/lib/content';
 
-export const metadata: Metadata = { title: 'Contact', alternates: { canonical: '/contact' } };
+export const metadata: Metadata = { title: 'Contact', description: 'Contact Patrick S. Mensah about job opportunities, technical collaboration, or questions about the Microsoft Power Platform and data.', alternates: { canonical: '/contact' } };
 
 export default async function Contact() {
   const profile = await getProfile();
@@ -10,7 +10,7 @@ export default async function Contact() {
     <div className="wrap section two-col">
       <div>
         <h1>Contact</h1>
-        <p className="muted">Welcome inquiries: consulting and project work on Microsoft Power Platform and data solutions, speaking and training, and technical collaboration.</p>
+        <p className="muted">I welcome messages about job opportunities, technical collaboration, and questions about the Microsoft Power Platform and data. I read every message and reply as soon as I can.</p>
         <ContactForm />
       </div>
       {(profile?.email || (profile?.links.length ?? 0) > 0) && (

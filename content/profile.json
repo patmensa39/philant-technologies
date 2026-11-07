@@ -1,6 +1,6 @@
 {
   "siteName": "Philant Technologies",
-  "name": "Patrick Mensah",
+  "name": "Patrick S. Mensah",
   "photo": "/images/profile/photo.png",
   "photoAlt": "Portrait of Patrick S. Mensah wearing a navy suit and light blue tie",
   "tagline": "I turn business requirements into reliable applications, automated workflows, and data solutions on the Microsoft Power Platform.",
@@ -90,11 +90,11 @@
   "experience": [
     {
       "title": "Data Analyst 2 / Power Platform Developer",
-      "organization": "New York State Office of Information Technology Services",
+      "organization": "State government agency (information technology)",
       "period": "May 2026 to present",
       "highlights": [
         "Design, develop, and deploy enterprise applications with Model-Driven Apps, Power Apps, Dataverse, Power Automate, and Power Pages, replacing legacy InfoPath and SharePoint-based solutions.",
-        "Design Dataverse data models, tables, relationships, business rules, calculated columns, and Business Process Flows for complex agency workflows.",
+        "Design Dataverse data models, tables, relationships, business rules, calculated columns, and Business Process Flows for complex business workflows.",
         "Extend applications with custom pages, Power Fx components, JavaScript web resources, and client-side form scripts.",
         "Build Power Automate cloud flows for approvals, notifications, document generation, and integrations across Microsoft 365.",
         "Configure Dataverse security (business units, security roles, field security, teams) and design SharePoint permission models.",
@@ -103,10 +103,10 @@
     },
     {
       "title": "AI Platform Engineer (Contract)",
-      "organization": "Eliassen Group",
+      "organization": "IT consulting firm (contract role)",
       "period": "July 2026 to August 2026",
       "highlights": [
-        "Served as technical advisor to the Director of Emerging Technology on Power Platform architecture, security, governance, and enterprise application implementation.",
+        "Served as technical advisor to technology leadership on Power Platform architecture, security, governance, and enterprise application implementation.",
         "Designed Dataverse security architecture, including security roles, business units, teams, and access controls, with Microsoft Entra ID security groups for centralized access management.",
         "Supported development of an AI platform using Code Apps and its readiness for production deployment.",
         "Designed and supported ALM across Development, Test, and Production environments, including controlled promotion of solutions.",
@@ -115,22 +115,22 @@
     },
     {
       "title": "Data Analyst / Power Platform Developer",
-      "organization": "New York Department of State",
+      "organization": "State government agency",
       "period": "October 2023 to May 2026",
       "highlights": [
-        "Architected and developed the Fiscal Contract Manager, a Model-Driven App on Dataverse that automates procurement, contract management, voucher processing, and financial tracking and replaces manual Excel-based processes.",
+        "Architected and developed a model-driven app on Dataverse that automates a multi-step business process end to end, replacing manual Excel-based tracking.",
         "Led the modernization of legacy SharePoint and InfoPath business applications with Power Platform solutions.",
-        "Led the replatforming of the Fiscal Revenue System from Oracle to Microsoft Power Platform.",
-        "Led the migration of the Division of Community Services SharePoint-based applications to Dataverse and Model-Driven Apps.",
+        "Led the replatforming of a business-critical system from Oracle to the Microsoft Power Platform.",
+        "Led the migration of a division's SharePoint-based applications to Dataverse and model-driven apps.",
         "Built Power Automate flows for approvals, notifications, document management, and data synchronization across Dataverse, SharePoint, and Microsoft 365.",
-        "Automated statewide data collection and reporting with ArcGIS Survey123, XLSForms, Power Automate, SharePoint, and Power BI.",
-        "Partnered with Internal Audit on analytical solutions using Power Query, SQL, Python, and R for compliance reviews, fraud detection, and operational reporting.",
+        "Automated organization-wide data collection and reporting with ArcGIS Survey123, XLSForms, Power Automate, SharePoint, and Power BI.",
+        "Partnered with an internal audit team on analytical solutions using Power Query, SQL, Python, and R for compliance reviews, fraud detection, and operational reporting.",
         "Delivered training and user support on Power Platform, Power Query, and Microsoft 365 to increase adoption across business units."
       ]
     },
     {
       "title": "Area Manager",
-      "organization": "Amazon",
+      "organization": "Large e-commerce and logistics company",
       "period": "June 2021 to October 2023",
       "highlights": [
         "Managed technology-enabled operations in a high-volume distribution environment and used operational data and reports to find bottlenecks and performance gaps.",

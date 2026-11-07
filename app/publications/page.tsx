@@ -5,7 +5,7 @@ import { formatDate } from '@/lib/format';
 import { siteUrl } from '@/lib/site';
 import { CopyFeedAddress } from '@/components/CopyFeedAddress';
 
-export const metadata: Metadata = { title: 'Publications and RSS', alternates: { canonical: '/publications' } };
+export const metadata: Metadata = { title: 'Publications and RSS', description: 'Latest writing from Philant Technologies, with an RSS feed to follow new articles in any feed reader.', alternates: { canonical: '/publications' } };
 /** External feeds are refreshed at most once an hour. */
 export const revalidate = 3600;
 
@@ -24,7 +24,8 @@ export default async function Publications() {
         </div>
       )}
 
-      {items.length ? (
+      {items.length ? (<>
+        <h2 className="sr-only">Latest publications</h2>
         <ul className="pub-list">
           {items.map((i) => (
             <li className="pub-item" key={i.link}>
@@ -38,9 +39,9 @@ export default async function Publications() {
             </li>
           ))}
         </ul>
-      ) : (
+      </>) : (
         <div className="empty" style={{ maxWidth: '52rem' }}>
-          <p>{externalSources > 0 && errors.length === externalSources ? 'No articles could be loaded right now. Please try again later.' : 'No articles have been published yet. Check back soon.'}</p>
+          <p>{externalSources > 0 && errors.length === externalSources ? 'No articles could be loaded right now. Please try again later.' : 'New articles are coming soon.'}</p>
         </div>
       )}
     </div>

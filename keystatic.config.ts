@@ -197,7 +197,19 @@ export default config({
         demoUrl: fields.url({ label: 'Demo URL' }),
         coverImage: fields.image({ label: 'Cover image', directory: 'public/images/projects', publicPath: '/images/projects/' }),
         coverAlt: fields.text({ label: 'Cover image alt text' }),
-        body: fields.markdoc({ label: 'Case study (problem, approach, implementation, verified outcomes)' }),
+        caseStudy: fields.object(
+          {
+            problem: fields.text({ label: 'Problem', description: 'The business need or pain point. Leave a blank line between paragraphs.', multiline: true }),
+            approach: fields.text({ label: 'Approach', description: 'Options considered and the choices made, and why.', multiline: true }),
+            architecture: fields.text({ label: 'Architecture', description: 'Tables, apps, flows, integrations, and security. No confidential details.', multiline: true }),
+            architectureDiagram: fields.image({ label: 'Architecture diagram (optional)', directory: 'public/images/projects', publicPath: '/images/projects/' }),
+            architectureDiagramAlt: fields.text({ label: 'Architecture diagram description (alt text)' }),
+            outcomes: fields.array(fields.text({ label: 'Outcome' }), { label: 'Outcomes', description: 'One verifiable result per item. Add only results you can verify.', itemLabel: (o) => o.value || 'Outcome' }),
+            lessons: fields.text({ label: 'Lessons learned', description: 'What worked, and what you would do differently.', multiline: true }),
+          },
+          { label: 'Case study', description: 'Each section appears on the project page only when it has content. "My role" above is shown with it.' },
+        ),
+        body: fields.markdoc({ label: 'Additional details (optional)', description: 'Anything that does not fit the case study sections above.' }),
       },
     }),
 

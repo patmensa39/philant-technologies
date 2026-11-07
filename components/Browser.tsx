@@ -22,6 +22,7 @@ export function Browser({ items, basePath, groups, noun }: { items: BrowserItem[
         </select></label>
       </div>
       <p className="muted small" aria-live="polite">{shown.length} {shown.length === 1 ? 'result' : 'results'}</p>
+      <h2 className="sr-only">{noun.charAt(0).toUpperCase() + noun.slice(1)}</h2>
       {shown.length ? (
         <div className="grid">
           {shown.map((i) => (

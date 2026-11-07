@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getArticles, getProfile, getProjects, getResources, photoSrc, resumeSrc } from '@/lib/content';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -23,23 +24,21 @@ export default async function Home() {
       <div className="wrap hero">
         {photo && (
           <figure className="portrait">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={photo} alt={profile?.photoAlt || `Portrait of ${profile?.name ?? 'the site owner'}`} width={800} height={800} fetchPriority="high" />
+            {/* Resized and converted to WebP automatically, so any photo uploaded in the admin stays fast. */}
+            <Image src={photo} alt={profile?.photoAlt || `Portrait of ${profile?.name ?? 'the site owner'}`} width={800} height={800} sizes="(max-width: 52rem) 16rem, 32rem" preload />
           </figure>
         )}
         <div className="hero-text">
           {profile?.roleTitle && <p className="eyebrow">{profile.roleTitle}</p>}
-          <h1>{profile?.name ?? '[Your Name]'}</h1>
+          <h1>{profile?.name ?? 'Patrick S. Mensah'}</h1>
           <p className="lede">{profile?.tagline}</p>
           <p className="muted" style={{ maxWidth: '54ch' }}>{profile?.bio}</p>
           {(profile?.heroHighlights.length ?? 0) > 0 && (
             <ul className="chips" aria-label="Core technologies">{profile!.heroHighlights.map((t) => <li key={t}>{t}</li>)}</ul>
           )}
           <div className="actions">
-            <Link className="btn" href="/projects">Explore my work</Link>
-            <Link className="btn ghost" href="/about">About me</Link>
-            <a className="btn ghost" href={resumeSrc(profile?.resume)} download>Download resume</a>
-            <Link className="btn ghost" href="/contact">Get in touch</Link>
+            <Link className="btn" href="/contact">Get in touch</Link>
+            <a className="text-link" href={resumeSrc(profile?.resume)} download>Download resume (PDF)</a>
           </div>
         </div>
       </div>
@@ -47,16 +46,14 @@ export default async function Home() {
 
       <PowerPlatformMap />
 
-      <section className="section" aria-labelledby="recent">
-        <div className="wrap">
-          <div className="section-head"><h2 id="recent">Recent articles</h2><Link href="/blog">All articles</Link></div>
-          {recent.length ? (
+      {recent.length > 0 && (
+        <section className="section" aria-labelledby="recent">
+          <div className="wrap">
+            <div className="section-head"><h2 id="recent">Recent articles</h2><Link href="/blog">All articles</Link></div>
             <div className="grid">{recent.map((a) => <ArticleCard key={a.slug} {...a} />)}</div>
-          ) : (
-            <div className="empty"><p>No articles published yet. Add one in the admin at /keystatic and set its status to Published.</p></div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {featured.length > 0 && (
         <section className="section" aria-labelledby="featured">
