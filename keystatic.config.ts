@@ -93,7 +93,7 @@ export default config({
           fields.object({
             degree: fields.text({ label: 'Degree' }),
             institution: fields.text({ label: 'Institution' }),
-            completed: fields.text({ label: 'Completed (for example: May 2022)' }),
+            completed: fields.text({ label: 'Completed (optional, for example: May 2022)', description: 'Leave empty to hide the date on the About page.' }),
           }),
           { label: 'Education', itemLabel: (e) => e.fields.degree.value },
         ),
