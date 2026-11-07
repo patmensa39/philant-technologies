@@ -24,7 +24,8 @@ export default async function Publications() {
         </div>
       )}
 
-      {items.length ? (
+      {items.length ? (<>
+        <h2 className="sr-only">Latest publications</h2>
         <ul className="pub-list">
           {items.map((i) => (
             <li className="pub-item" key={i.link}>
@@ -38,7 +39,7 @@ export default async function Publications() {
             </li>
           ))}
         </ul>
-      ) : (
+      </>) : (
         <div className="empty" style={{ maxWidth: '52rem' }}>
           <p>{externalSources > 0 && errors.length === externalSources ? 'No articles could be loaded right now. Please try again later.' : 'New articles are coming soon.'}</p>
         </div>

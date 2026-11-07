@@ -33,6 +33,7 @@ export function BlogBrowser({ items }: { items: Item[] }) {
         <label>Tag<select value={tag} onChange={(e) => reset(() => setTag(e.target.value))}><option value="all">All</option>{tags.map((t) => <option key={t} value={t}>{t}</option>)}</select></label>
       </div>
       <p className="muted small" aria-live="polite">{shown.length} {shown.length === 1 ? 'article' : 'articles'}</p>
+      <h2 className="sr-only">Articles</h2>
       {shown.length ? (
         <>
           <div className="grid">{shown.slice(0, count).map((a) => <ArticleCard key={a.slug} {...a} />)}</div>
