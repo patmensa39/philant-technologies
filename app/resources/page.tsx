@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getResources } from '@/lib/content';
 import { Browser } from '@/components/Browser';
+import { ComingSoon } from '@/components/ComingSoon';
 
 export const metadata: Metadata = { title: 'Presentations and resources', alternates: { canonical: '/resources' } };
 const TYPES = [
@@ -19,7 +20,7 @@ export default async function Resources() {
         <Browser noun="resources" basePath="/resources" groups={TYPES}
           items={resources.map((r) => ({ slug: r.slug, title: r.title, summary: r.summary, group: r.type, groupLabel: label(r.type), isDemo: r.isDemo, tags: r.tags, meta: r.file ? 'Download available' : 'No file attached' }))} />
       ) : (
-        <div className="empty"><p>No resources published yet.</p></div>
+        <ComingSoon message="Presentations and resources are coming soon." />
       )}
     </div>
   );

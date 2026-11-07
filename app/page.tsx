@@ -47,16 +47,14 @@ export default async function Home() {
 
       <PowerPlatformMap />
 
-      <section className="section" aria-labelledby="recent">
-        <div className="wrap">
-          <div className="section-head"><h2 id="recent">Recent articles</h2><Link href="/blog">All articles</Link></div>
-          {recent.length ? (
+      {recent.length > 0 && (
+        <section className="section" aria-labelledby="recent">
+          <div className="wrap">
+            <div className="section-head"><h2 id="recent">Recent articles</h2><Link href="/blog">All articles</Link></div>
             <div className="grid">{recent.map((a) => <ArticleCard key={a.slug} {...a} />)}</div>
-          ) : (
-            <div className="empty"><p>No articles published yet. Add one in the admin at /keystatic and set its status to Published.</p></div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {featured.length > 0 && (
         <section className="section" aria-labelledby="featured">

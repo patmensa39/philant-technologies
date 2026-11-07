@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getProjects } from '@/lib/content';
 import { Browser } from '@/components/Browser';
+import { ComingSoon } from '@/components/ComingSoon';
 
 export const metadata: Metadata = { title: 'Projects', alternates: { canonical: '/projects' } };
 export const STAGES = [
@@ -19,7 +20,7 @@ export default async function Projects() {
         <Browser noun="projects" basePath="/projects" groups={STAGES}
           items={projects.map((p) => ({ slug: p.slug, title: p.title, summary: p.summary, group: p.stage, groupLabel: label(p.stage), isDemo: p.isDemo, tags: p.technologies, meta: p.technologies.join(', ') }))} />
       ) : (
-        <div className="empty"><p>No projects published yet.</p></div>
+        <ComingSoon message="Project case studies are coming soon." />
       )}
     </div>
   );

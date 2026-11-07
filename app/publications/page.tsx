@@ -40,7 +40,7 @@ export default async function Publications() {
         </ul>
       ) : (
         <div className="empty" style={{ maxWidth: '52rem' }}>
-          <p>{externalSources > 0 && errors.length === externalSources ? 'No articles could be loaded right now. Please try again later.' : 'No articles have been published yet. Check back soon.'}</p>
+          <p>{externalSources > 0 && errors.length === externalSources ? 'No articles could be loaded right now. Please try again later.' : 'New articles are coming soon.'}</p>
         </div>
       )}
     </div>
