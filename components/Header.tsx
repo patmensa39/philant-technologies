@@ -8,18 +8,18 @@ export const NAV = [
   { href: '/projects', label: 'Projects' },
   { href: '/resources', label: 'Resources' },
   { href: '/skills', label: 'Skills' },
+  { href: '/resume', label: 'Resume' },
   { href: '/contact', label: 'Contact' },
   { href: '/search', label: 'Search' },
 ];
 
-export function Header({ name, resumeHref }: { name: string; resumeHref: string }) {
+export function Header({ name }: { name: string }) {
   return (
     <header className="site-header">
       <div className="wrap">
         <Link href="/" className="brand">{name}</Link>
         <nav className="nav" aria-label="Main">
           <NavLinks items={NAV} />
-          <a href={resumeHref} target="_blank" rel="noopener">Resume<span className="sr-only"> (PDF, opens in a new tab)</span></a>
         </nav>
         <ThemeToggle />
       </div>

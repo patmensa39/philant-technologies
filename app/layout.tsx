@@ -4,7 +4,7 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SiteChrome } from '@/components/SiteChrome';
-import { getProfile, resumeSrc } from '@/lib/content';
+import { getProfile } from '@/lib/content';
 import { siteUrl } from '@/lib/site';
 
 const base = siteUrl();
@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body>
         <SiteChrome>
           <a className="skip" href="#main">Skip to content</a>
-          <Header name={name} resumeHref={resumeSrc(profile?.resume)} />
+          <Header name={name} />
         </SiteChrome>
         <main id="main">{children}</main>
         <SiteChrome>

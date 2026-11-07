@@ -139,6 +139,7 @@ export async function getSearchIndex(): Promise<SearchRecord[]> {
     ...projects.map((p) => ({ type: 'Project' as const, title: p.title, excerpt: p.summary, url: `/projects/${p.slug}`, keywords: p.technologies.join(' ') })),
     ...resources.map((r) => ({ type: 'Resource' as const, title: r.title, excerpt: r.summary, url: `/resources/${r.slug}`, keywords: r.tags.join(' ') })),
     { type: 'Page', title: 'About', excerpt: (about?.intro ?? '').slice(0, 200), url: '/about', keywords: [about?.interests, about?.learning].join(' ') },
+    { type: 'Page', title: 'Resume', excerpt: 'View or download my resume (PDF).', url: '/resume', keywords: 'resume cv experience' },
     { type: 'Page', title: 'Skills and certifications', excerpt: 'Technical skills and professional certifications.', url: '/skills', keywords: [...(profile?.skillGroups ?? []).flatMap((g) => [g.category, ...g.skills]), ...(profile?.certifications ?? []).map((c) => c.name)].join(' ') },
   ];
   return out;
