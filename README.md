@@ -10,14 +10,18 @@ cp .env.example .env.local
 npm run dev        # http://localhost:3000, admin at /keystatic
 ```
 
-Other commands: `npm run typecheck`, `npm test`, `npm run build`.
+Other commands: `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`. Run all four before every commit.
+
+## Automated checks
+
+GitHub Actions (`.github/workflows/ci.yml`) runs the type check, lint, tests, and production build on every pull request and on every push to `main`. A red check means something is broken; fix it before merging.
 
 ## How content works
 
 | Content | Folder | Edited in admin under |
 | --- | --- | --- |
 | Articles | `content/articles/<slug>/` | Articles |
-| Projects | `content/projects/<slug>/` | Projects |
+| Projects (with a case-study section: problem, approach, architecture, outcomes, lessons learned) | `content/projects/<slug>/` | Projects |
 | Presentations and resources | `content/resources/<slug>/` | Presentations and resources |
 | Categories | `content/categories/` | Categories |
 | Site name, bio, links, skills, certifications | `content/profile.json` | Profile and site settings |
@@ -73,6 +77,7 @@ Commit only if all pass.
 ## Known limitations
 
 - Scheduled publishing is not built.
-- The contact form rate limit is in-memory per server instance. It has no bot challenge yet.
-- No newsletter, social preview images, or favicon yet.
-- Automated tests cover form validation and the rate limiter only.
+- The contact form rate limit is in-memory per server instance. It has no bot challenge (such as Cloudflare Turnstile) yet.
+- No newsletter, analytics, or Content Security Policy yet.
+- Tests cover the contact form, content rules, feeds, certifications, and that every project file loads with the current admin schema.
+- Images (profile photo, certificates, architecture diagrams) are resized and converted to WebP by Vercel's image optimization, which has a monthly allowance on the free Hobby plan; a personal site stays well within it.
